@@ -52,6 +52,13 @@ La selección de `--program` se guarda en
 al armar el menú. Reinstalar sin `--program` borra ese archivo y restaura el menú
 completo; `--uninstall` también lo elimina.
 
+Si al clonar `./install.sh` responde **Permiso denegado**, es porque el archivo no
+llegó con el bit ejecutable. Dale permiso una vez (o ejecutalo con `bash install.sh`):
+
+```bash
+chmod +x install.sh
+```
+
 Copia `nautilus-open-here.py` a
 `${XDG_DATA_HOME:-~/.local/share}/nautilus-python/extensions/` y borra la extensión
 previa `alacritty-shell.py` si existía (mismo menú, nombre viejo).
