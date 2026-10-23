@@ -26,15 +26,23 @@ Reglas de la carpeta objetivo:
 Los procesos se lanzan desacoplados (`start_new_session`), así que sobreviven al
 cierre de Nautilus.
 
-## Requisitos
+## Dependencias
 
-- Nautilus / GNOME Files
-- `nautilus-python` — Fedora: `sudo dnf install nautilus-python`
-  (en distros más viejas el paquete es `python3-nautilus`)
-- `alacritty` en el `PATH`
-- `zed` en el `PATH` (el CLI, no sólo el desktop entry)
-- `cargo` (Rust) para compilar el `stk` vendorizado — sólo la primera vez o cuando
-  cambie `vendor/stk/`. Sin `cargo`, el script cae al `stk` del `PATH` y avisa.
+Para usar la extensión:
+
+| Dependencia | Para qué | Instalación |
+|---|---|---|
+| Nautilus / GNOME Files | hospeda la extensión | gestor de paquetes de la distro |
+| `nautilus-python` (PyGObject) | carga la extensión dentro de Nautilus | Fedora: `sudo dnf install nautilus-python` · Debian/Ubuntu: `sudo apt install python3-nautilus` |
+| `python3` | intérprete de la extensión y de `install.sh` | en el `PATH` |
+| `alacritty` | acción **Terminal (Alacritty)** | en el `PATH` |
+| `zed` (CLI) | acción **Zed** | en el `PATH` (el CLI, no sólo el desktop entry) |
+
+La extensión sólo usa la biblioteca estándar de Python y PyGObject
+(`gi.repository.GObject`, `Nautilus`); **no hay dependencias de pip**.
+
+El `stk` que usa `install.sh` para el logging viene vendorizado en `vendor/stk/`;
+no es una dependencia a instalar (ver [stk vendorizado](#stk-vendorizado)).
 
 ## Instalación
 
